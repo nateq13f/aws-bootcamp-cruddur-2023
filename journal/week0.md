@@ -24,27 +24,33 @@ gitpod /workspace/aws-bootcamp-cruddur-2023 (main) $ aws sts get-caller-identity
 
 - created user and doublechecked in cli == 
 
-** NOTE to add pic of CLI from gitpod "cli --version"     and to insert:: ![image description](assets/image.jpg) **
-
+![image description](assets/awscli.PNG)
 
 
 ### Billing
 
 - created billing alarm at 8$
 
-** NOTE to add pic of billing alarm with account at top right showing?     and to insert:: ![image description](assets/image.jpg)**
+![image description](assets/billingalarm.PNG)
 
+- cli description of alarm
+
+![image description](assets/billingalarmcli.PNG)
 
 ### Budget
 
 - crated budget for 10$
 
-** NOTE to add pic of budget with account at top right showing ?     and to insert:: ![image description](assets/image.jpg)**
+![image description](assets/budget.PNG)
+
+- cli description of budget
+
+![image description](assets/budgetcli.PNG)
 
 
 ### Recreate logical architecture design
 
-** NOTE to add pic of design from Lucid chars ?     and to insert:: ![image description](assets/image.jpg)**
+![image description](assets/image.jpg)
 
 [lucid chart share link](afagrsgsdrg.com)
 
