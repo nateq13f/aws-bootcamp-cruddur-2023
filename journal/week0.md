@@ -56,7 +56,7 @@ gitpod /workspace/aws-bootcamp-cruddur-2023 (main) $ aws sts get-caller-identity
 
 ### Homework Challenges
 
-- add CDN service (cloudfront kind of thing)
+- add SES email integration for batch sending updates/promotions/news
 
 ## Issues
 
