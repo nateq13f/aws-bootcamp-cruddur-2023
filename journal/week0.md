@@ -51,12 +51,12 @@ gitpod /workspace/aws-bootcamp-cruddur-2023 (main) $ aws sts get-caller-identity
 
 [Napkin view-only chart link](https://lucid.app/lucidchart/98335371-5707-4a45-bbf5-2f1b167258f6/edit?viewport_loc=-162%2C-108%2C3072%2C1597%2C0_0&invitationId=inv_83784cd2-6a9e-4801-93f1-64a342ce2211)
 
-![image description](assets/image.PNG)
+![image description](assets/week0 napkin.png)
 
 
 ### Logical architecture design
 
-[lucid chart share link](assets/image.PNG)
+[lucid chart share link](assets/week0 napkin.png)
 
 ### Homework Challenges
 
