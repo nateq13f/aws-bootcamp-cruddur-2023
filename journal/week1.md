@@ -14,6 +14,9 @@ export FRONTEND_URL="*"
 export BACKEND_URL="*"
 ```
 
+Added the Dynamo local, postgres, and there volumes to the docker-compose file so it exists
+
+
 - Docker extension with the right-click options for `compose start` and `compose stop` is very helpful
 
 Docker exec command can actually be "ran" by right clicking the docker image on the docker extension list of images
