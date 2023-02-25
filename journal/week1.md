@@ -7,9 +7,12 @@
 
 troubleshoointg steps taken ===
 
-aap.py = NEEDS 2 more env variables
+app.py = NEEDS 2 more env variables
+
+```
 export FRONTEND_URL="*"
 export BACKEND_URL="*"
+```
 
 Docker exec command can actually be "ran" by right clicking the docker image on the docker extension list of images
 
