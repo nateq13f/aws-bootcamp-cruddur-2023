@@ -22,4 +22,11 @@ FORGOT to append the /api/activities/home to the gitpod link so I was getting sa
 
 OPEN another terminal to view running docker images with `docker ps` .. I was wondering how to do this since on VScode there is only 1 terminal by default and it really annoyed me.
 
+Personal challenges::
+
+Github error thrown::
+
+`fatal: Need to specify how to reconcile divergent branches.`
+
+fixed by using command: `git config --global pull.ff true`
 
