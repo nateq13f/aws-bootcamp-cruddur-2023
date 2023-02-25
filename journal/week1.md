@@ -33,3 +33,5 @@ Github error thrown::
 
 fixed by using command: `git config --global pull.ff true`
 
+Could not get Postgres extension to connect, it was timing out. I was accidentally trying to open a MySQL DB instead of Postgres. Now it works.
+
