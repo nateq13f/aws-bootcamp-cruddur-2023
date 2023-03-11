@@ -15,7 +15,7 @@ from services.messages import *
 from services.create_message import *
 from services.show_activity import *
 
-from lib.cognito_token_verification import CognitoTokenVerification
+from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError
 
 # X-Ray ----- >>
 from aws_xray_sdk.core import xray_recorder
@@ -56,7 +56,7 @@ tracer = trace.get_tracer(__name__)
 
 app = Flask(__name__)
 
-cognito_token_verification = CognitoTokenVerification(
+cognito_jwt_token = CognitoJwtToken(
   user_pool_id=os.getenv("AWS_COGNITO_USER_POOL_ID"),
   user_pool_client_id=os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID"),
   region=os.getenv("AWS_DEFAUL_REGION")
@@ -124,7 +124,18 @@ def data_create_message():
 
 @app.route("/api/activities/home", methods=['GET'])
 def data_home():
+  access_token = extract_access_token(request.headers)
+  try:
+    claims = CognitoJwtToken.verify(access_token)
+    # authenticated requests
+    app.logger.debug("authenticated")
+    app.logger.debug(claims)
+  except TokenVerifyError as e:
+    # unauthenticated requests
+    app.logger.debug("unauthenticated")
+
   data = HomeActivities.run()
+  claims = aws_auth.claims
   return data, 200
 
 @app.route("/api/activities/notifications", methods=['GET'])
