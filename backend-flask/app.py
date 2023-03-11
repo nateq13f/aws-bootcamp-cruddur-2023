@@ -133,9 +133,7 @@ def data_home():
   except TokenVerifyError as e:
     # unauthenticated requests
     app.logger.debug("unauthenticated")
-
-  data = HomeActivities.run()
-  claims = aws_auth.claims
+    data = HomeActivities.run()
   return data, 200
 
 @app.route("/api/activities/notifications", methods=['GET'])
