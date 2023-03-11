@@ -13,6 +13,11 @@ cognito_token_verification = CognitoTokenVerification(
 
 ```
 
+- Added Flask Cognito integration for the backend from a custom repository 
+- Made new file for it Cognito_Jwt-Token.py    --> [cognito_jwt_token page here](backend-flask/lib/cognito_jwt_token.py)
+
+---> [Github repository](https://github.com/cgauge/Flask-AWSCognito/blob/master/flask_awscognito/services/token_service.py)
+
 
 Modified `home_activities.py`
 
