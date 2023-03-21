@@ -8,12 +8,6 @@
 4. Created seed.sql file to add data into the tables
 5. Created db-setup for ease of setting up a new local DB and schema
 
-SQL queries
-```
-SQL queries
-```
-
-
 ### Issues I ran into along the way --
 
 - Not setting env var correctly
