@@ -21,12 +21,16 @@ tasks:
     command: |
       export GITPOD_IP=$(curl ifconfig.me)
       source  "$THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule"  
-# runs npm i at start of gitpod (which is needed to dock up ------>>      
+# runs npm i at start of gitpod (which is needed to dock up) ------>>      
   - name: react-js
     command: |
       cd frontend-react-js
       npm i
-# ------>>              
+# runs pip install -r requirements at start of gitpod (which is needed to dock up) ------>>    
+  - name: flask
+    command: |
+      cd backend-flask
+      pip install -r requirements.txt
 ports:
   - name: frontend
     port: 3000
