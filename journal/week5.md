@@ -5,6 +5,9 @@
 - Made `ddb.py` file for dynamo logic, like the PostGres `db.py` file
 - Created script `list-users` that grabs and displays the cognito users
 - Added authorization header to frontend pages so it gets passed correctly (MessageGroups.js, MessageGroup.js, HomeFeedPage.js, MessageForm.js)
+- Created `CheckAuth.js` file in frontend
+- Change `App.js` path to disaply the `message_group_uuid`   instead of handle
+- Chaned the time to display more accurately with `year = str(datetime.datetime.now().year)`
 
 ### Issues
 
