@@ -14,3 +14,5 @@
 
 CREATE , load, and seed REGULAR DB first, and then the ddb scripts will run because they rely on the 
 Regular DB attributes.
+
+- BIG issues with getting my own custom created user into the local Postgres DB. Had to hardcode the uuid into the `seed` script. Then had a typo extra comma. Then `setup` finally worked and created my user with uuid.
