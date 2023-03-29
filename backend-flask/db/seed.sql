@@ -4,12 +4,12 @@ VALUES
   ('Andrew Brown', 'andrew@exampro.co', 'andrewbrown' ,'MOCK'),
   ('Andrew Bayko', 'bayko@exampro.co', 'bayko' ,'MOCK');
   ('Londo Mollari', 'lmollari@centari.com', 'londo' ,'MOCK');
-  ('nathan wright', 'nqwright9311@gmail.com', 'nqwright9311' ,'MOCK');
+  ('Nathan Wright', 'nqwright9311@gmail.com', 'nqwright9311' ,'MOCK');
 
 INSERT INTO public.activities (user_uuid, message, expires_at)
 VALUES
   (
-    (SELECT uuid from public.users WHERE users.handle = 'andrewbrown' LIMIT 1),
+    (SELECT uuid from public.users WHERE users.handle = 'nqwright9311' LIMIT 1),
     'This was imported as seed data!',
     current_timestamp + interval '10 day'
   )
