@@ -8,6 +8,8 @@
 - Created `CheckAuth.js` file in frontend
 - Change `App.js` path to disaply the `message_group_uuid`   instead of handle
 - Chaned the time to display more accurately with `year = str(datetime.datetime.now().year)`
+- Switched to Prod on `docker-compose` file to test the production DynamoDB table 
+- updated DynamoDB streams lambda so it updates the prod DyanamoDB records.
 
 ### Issues
 
