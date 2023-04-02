@@ -124,6 +124,17 @@ aws ecs execute-command  \
 TESTING health check for ECS
 == http://3.87.22.72:4567/api/health-check
 
+
+### Load Balancer
+- Created load balancer with target groups for both front and back end to respective ports
+- SG pointing to ECS SG
+
+
+- Added frontend dockerfile.prod
+- Added frontend nginx.conf file for nginx server
+
+
+
 ### Challenges
 
 
