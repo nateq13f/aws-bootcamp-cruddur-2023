@@ -120,6 +120,10 @@ aws ecs execute-command  \
 --interactive
 ```
 
+
+TESTING health check for ECS
+== http://3.87.22.72:4567/api/health-check
+
 ### Challenges
 
 
