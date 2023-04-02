@@ -66,6 +66,46 @@ docker tag backend-flask:latest $ECR_BACKEND_FLASK_URL:latest
 docker push $ECR_BACKEND_FLASK_URL:latest
 ```
 
+- SET paramaters in SSM parameter store though CLI commands
+
+```
+aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/AWS_ACCESS_KEY_ID" --value $AWS_ACCESS_KEY_ID
+aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/AWS_SECRET_ACCESS_KEY" --value $AWS_SECRET_ACCESS_KEY
+aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/CONNECTION_URL" --value $PROD_CONNECTION_URL
+aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/ROLLBAR_ACCESS_TOKEN" --value $ROLLBAR_ACCESS_TOKEN
+aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/OTEL_EXPORTER_OTLP_HEADERS" --value "x-honeycomb-team=$HONEYCOMB_API_KEY"
+```
+
+- Adding policies for ECS tasks to get the SSM paramaters
+- Created task role through CLI
+```
+aws iam create-role \
+    --role-name CruddurTaskRole \
+    --assume-role-policy-document "{
+  \"Version\":\"2012-10-17\",
+  \"Statement\":[{
+    \"Action\":[\"sts:AssumeRole\"],
+    \"Effect\":\"Allow\",
+    \"Principal\":{
+      \"Service\":[\"ecs-tasks.amazonaws.com\"]
+    }
+  }]
+}"
+```
+
+- Backup to ROOT dir and run Create ECS task definition for backend since its aws/task-definitions
+```
+aws ecs register-task-definition --cli-input-json file://aws/task-definitions/backend-flask.json
+```
+
+- Created security group for ECS containers
+  1 - Grab and set VPC ID and SG ID
+
+- Create service name "backend-flask"
+- Have to install SSM client first
+
+- Delete service and run it through CLI using task defintion JSON file and update the security group and subnets for my own environment
+
 ### Challenges
 
 
