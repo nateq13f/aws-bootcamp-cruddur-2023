@@ -102,9 +102,23 @@ aws ecs register-task-definition --cli-input-json file://aws/task-definitions/ba
   1 - Grab and set VPC ID and SG ID
 
 - Create service name "backend-flask"
-- Have to install SSM client first
+- Have to install SSM client first AND add to gitpod.yml file so it downloads SSM agent to gitpod everytime you start a gitpod container
+```
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+sudo dpkg -i session-manager-plugin.deb
+```
 
 - Delete service and run it through CLI using task defintion JSON file and update the security group and subnets for my own environment
+- Now you can connect 
+```
+aws ecs execute-command  \
+--region $AWS_DEFAULT_REGION \
+--cluster cruddur \
+--task 05d639e619e34bd29314fcccee35726a \
+--container backend-flask \
+--command "/bin/bash" \
+--interactive
+```
 
 ### Challenges
 
