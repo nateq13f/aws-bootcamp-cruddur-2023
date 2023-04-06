@@ -98,6 +98,11 @@ aws iam create-role \
 aws ecs register-task-definition --cli-input-json file://aws/task-definitions/backend-flask.json
 ```
 
+- Create service after registering newest task definition
+```
+aws ecs create-service --cli-input-json file://aws/json/service-backend-flask.json
+```
+
 - Created security group for ECS containers
   1 - Grab and set VPC ID and SG ID
 
@@ -138,7 +143,7 @@ TESTING health check for ECS
 ### Challenges
 
 
-- Did not have env `AWS_ACCOUNT_ID` set so the ECR login command was not working
+- Did not have env `AWS_ACCOUNT_ID` set so the ECR login command was not working 
 ```
 export AWS_ACCOUNT_ID=xxxxxxx036
 gp env AWS_ACCOUNT_ID=xxxxxxx036
