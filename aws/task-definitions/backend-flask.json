@@ -44,8 +44,8 @@
           {"name": "OTEL_EXPORTER_OTLP_ENDPOINT", "value": "https://api.honeycomb.io"},
           {"name": "AWS_COGNITO_USER_POOL_ID", "value": "us-east-1_YIsZZQ2ZU"},
           {"name": "AWS_COGNITO_USER_POOL_CLIENT_ID", "value": "43g33jegd4tre25a7nip7ggohb"},
-          {"name": "FRONTEND_URL", "value": "https://cruddur.com"},
-          {"name": "BACKEND_URL", "value": "https://api.cruddur.com"},
+          {"name": "FRONTEND_URL", "value": "https://fireforeffect.live"},
+          {"name": "BACKEND_URL", "value": "https://api.fireforeffect.live"},
           {"name": "AWS_DEFAULT_REGION", "value": "us-east-1"}
         ],
         "secrets": [
