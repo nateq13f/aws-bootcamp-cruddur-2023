@@ -153,7 +153,7 @@ docker build -f Dockerfile.prod -t backend-flask-prod .
 
 Better method of scripts to deploy new code changes to ECS services
 1. ./bin/ecr/login
-2. ./bin/docker/build/backend
+2. ./bin/docker/build/backend-flask-prod
 3. ./bin/docker/push/backend
 4. ./bin/ecs/force-deploy-backend
 
