@@ -139,6 +139,14 @@ TESTING health check for ECS
 - Added frontend nginx.conf file for nginx server
 
 
+### Securing Flask
+
+- Create login script for ease of use, and created new `Dockerfile.prod` file
+
+Building new backend prod image
+-> /backend-flask/
+docker build -f Dockerfile.prod -t backend-flask-prod .
+
 
 ### Challenges
 
