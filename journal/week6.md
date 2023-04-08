@@ -148,6 +148,16 @@ Building new backend prod image
 docker build -f Dockerfile.prod -t backend-flask-prod .
 
 
+
+- Created scripts for ECS / ECR convenience
+
+Better method of scripts to deploy new code changes to ECS services
+1. ./bin/ecr/login
+2. ./bin/docker/build/backend
+3. ./bin/docker/push/backend
+4. ./bin/ecs/force-deploy-backend
+
+
 ### Challenges
 
 
