@@ -19,3 +19,13 @@
 ```
 
 - Created `bin/busybox` file to use it as a test image to `ping` or `telnet` other services to test network connectivity
+
+### Timezone fixes
+
+Fixing timezone issue -
+for files -
+`seed.sql`
+`ddb.py`
+`MessageItem.js`
+`MessageGroupItem.js`
+Created file `DateTimeFormat.js`
