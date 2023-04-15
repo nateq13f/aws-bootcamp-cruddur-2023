@@ -5,7 +5,7 @@ async function main(){
   const srcBucket = 'assets.fireforeffect.live'
   const srcKey = 'avatars/original/Big_Chungus.jpg'
   const dstBucket = 'assets.fireforeffect.live'
-  const dstKey = 'avatars/processed/Big_Chungus.png'
+  const dstKey = 'avatars/processed/Big_Chungus.jpg'
   const width = 256
   const height = 256
 
