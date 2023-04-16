@@ -57,3 +57,5 @@ Lambda error in CloudWatch ->
     ]
 }
 ```
+
+FIXED ---- run command `npm i @aws-sdk/client-s3`
