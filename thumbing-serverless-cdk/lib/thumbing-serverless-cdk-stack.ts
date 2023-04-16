@@ -7,7 +7,6 @@ import * as subscriptions from 'aws-cdk-lib/aws-sns-subscriptions';
 import * as sns from 'aws-cdk-lib/aws-sns';
 import { Construct } from 'constructs';
 import * as dotenv from 'dotenv';
-import * as process from 'process';
 
 // load env vars
 dotenv.config();
@@ -17,13 +16,15 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     super(scope, id, props);
 
     // The code that defines your stack goes here
-    const bucketName: string = process.env.THUMBING_BUCKET_NAME as string;
+    const uploadsBucketName: string = process.env.UPLOADS_BUCKET_NAME as string;
+    const assetsBucketName: string = process.env.ASSETS_BUCKET_NAME as string;
     const folderInput: string = process.env.THUMBING_S3_FOLDER_INPUT as string;
     const folderOutput: string = process.env.THUMBING_S3_FOLDER_OUTPUT as string;
     const webhookUrl: string = process.env.THUMBING_WEBHOOK_URL as string;
     const topicName: string = process.env.THUMBING_TOPIC_NAME as string;
     const functionPath: string = process.env.THUMBING_FUNCTION_PATH as string;
-    console.log('bucketName',bucketName)
+    console.log('uploadsBucketName',uploadsBucketName)
+    console.log('assetsBucketName',assetsBucketName)
     console.log('folderInput',folderInput)
     console.log('folderOutput',folderOutput)
     console.log('webhookUrl',webhookUrl)
@@ -31,31 +32,40 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     console.log('functionPath',functionPath)
 
     // create bucket
-    const bucket = this.importBucket(bucketName);
+    const uploadsBucket = this.importBucket(uploadsBucketName);
+    const assetsBucket = this.importBucket(assetsBucketName);
 
     // create lambda
-    const lambda = this.createLambda(functionPath, bucketName, folderInput, folderOutput);
+    const lambda = this.createLambda(
+      functionPath,
+      uploadsBucketName,
+      assetsBucketName,
+      folderInput,
+      folderOutput
+      );
 
     //create s3 event notificaiton which triggers the lambda
-    this.createS3NotifyToLambda(folderInput,lambda,bucket)
+    const snsTopic = this.createSnsTopic(topicName)
+    this.createS3NotifyToLambda(folderInput,lambda,uploadsBucket)
+    this.createS3NotifyToSns(folderOutput,snsTopic,assetsBucket)
 
     // s3 read and write IAM policy
-    const s3ReadWritePolicy = this.createPolicyBucketAccess(bucket.bucketArn)
+    const s3UploadsReadWritePolicy = this.createPolicyBucketAccess(uploadsBucket.bucketArn)
+    const s3AssetsReadWritePolicy = this.createPolicyBucketAccess(assetsBucket.bucketArn)
 
     //attaches lambda
-    lambda.addToRolePolicy(s3ReadWritePolicy);
+    lambda.addToRolePolicy(s3UploadsReadWritePolicy);
+    lambda.addToRolePolicy(s3AssetsReadWritePolicy);
 
     // creates SNS topic, subscription, and IAM policy needed
-    const snsTopic = this.createSnsTopic(topicName)
     this.createSnsSubscription(snsTopic,webhookUrl)
-    this.createS3NotifyToSns(folderOutput,snsTopic,bucket)
 
     //const snsPublishPolicy = this.createPolicySnSPublish(snsTopic.topicArn)
     //lambda.addToRolePolicy(snsPublishPolicy);
   }
 
   createBucket(bucketName: string){
-    const bucket = new s3.Bucket(this, 'ThumbingBucket', {
+    const bucket = new s3.Bucket(this, 'UploadsBucket', {
       bucketName: bucketName,
       removalPolicy: cdk.RemovalPolicy.DESTROY
     });
@@ -67,14 +77,14 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     return bucket;
   }
 
-  createLambda(functionPath: string, bucketName: string, folderInput: string, folderOutput: string): lambda.IFunction{
+  createLambda(functionPath: string, uploadsBucketName: string, assetsBucketName: string, folderInput: string, folderOutput: string): lambda.IFunction{
     const lambdaFunction = new lambda.Function(this, 'ThumbLambda', {
       runtime: lambda.Runtime.NODEJS_18_X,
       handler: 'index.handler',
       code: lambda.Code.fromAsset(functionPath),
       environment: {
-        DEST_BUCKET_NAME: bucketName,
-        FODLER_INPUT: folderInput,
+        DEST_BUCKET_NAME: assetsBucketName,
+        FOLDER_INPUT: folderInput,
         FOLDER_OUTPUT: folderOutput,
         PROCESS_WIDTH: '512',
         PRCESS_HEIGHT: '512'
