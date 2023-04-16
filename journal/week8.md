@@ -36,3 +36,24 @@ gp env DOMAIN_NAME=fireforeffect.live
 - my buket name was named `cruddur-thumbs` when it should have been my own domains name, so I used `cdk destroy` to tear down all resources created by the CDK to start fresh and grab new env vars.
 - Had to also reset the env var for THUMBING_BUCKET_NAME to my own domain `assets.fireforeffect.live`
 - Lambda function NOT logging and throwing error during s3-put test
+- BIG issue with Lambda NOT logging was solved by correcting my path in env vars, I ended it at /lambdas/.
+`THUMBING_TOPIC_NAME="/workspace/aws-bootcamp-cruddur-2023/aws/lambdas/process-images/"`
+
+STUCK at ----->>
+
+Lambda error in CloudWatch ->
+```
+2023-04-16T04:54:19.563Z	24b989ce-418a-459a-841d-d9d033def249	ERROR	Invoke Error 	
+{
+    "errorType": "Error",
+    "errorMessage": "Expected positive integer for height but received NaN of type number",
+    "stack": [
+        "Error: Expected positive integer for height but received NaN of type number",
+        "    at Object.invalidParameterError (/var/task/node_modules/sharp/lib/is.js:135:10)",
+        "    at Sharp.resize (/var/task/node_modules/sharp/lib/resize.js:268:16)",
+        "    at processImage (/var/task/s3-image-processing.js:29:6)",
+        "    at exports.handler (/var/task/index.js:27:32)",
+        "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+    ]
+}
+```
