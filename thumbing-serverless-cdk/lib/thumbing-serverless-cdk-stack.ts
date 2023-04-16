@@ -64,7 +64,7 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     //lambda.addToRolePolicy(snsPublishPolicy);
   }
 
-  createBucket(bucketName: string){
+  createBucket(bucketName: string): s3.IBucket {
     const bucket = new s3.Bucket(this, 'UploadsBucket', {
       bucketName: bucketName,
       removalPolicy: cdk.RemovalPolicy.DESTROY
