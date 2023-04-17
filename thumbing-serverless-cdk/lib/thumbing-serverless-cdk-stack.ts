@@ -32,7 +32,7 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     console.log('functionPath',functionPath)
 
     // create bucket
-    const uploadsBucket = this.importBucket(uploadsBucketName);
+    const uploadsBucket = this.createBucket(uploadsBucketName);
     const assetsBucket = this.importBucket(assetsBucketName);
 
     // create lambda
@@ -42,7 +42,7 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
       assetsBucketName,
       folderInput,
       folderOutput
-      );
+    );
 
     //create s3 event notificaiton which triggers the lambda
     const snsTopic = this.createSnsTopic(topicName)

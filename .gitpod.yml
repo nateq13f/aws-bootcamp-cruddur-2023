@@ -45,9 +45,6 @@ tasks:
       cd thumbing-serverless-cdk
       cp .env.example .env
       npm i
-  - name: sharp
-    command: |
-      source  "$THEIA_WORKSPACE_ROOT/bin/avatar/sharp"
 ports:
   - name: frontend
     port: 3000
