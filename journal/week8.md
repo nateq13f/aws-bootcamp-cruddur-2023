@@ -14,6 +14,19 @@ npm i sharp
 - Install SDK for s3
 npm i @aws-sdk/client-s3
 
+ADDING Sharp because only Sharp is required, not the whole node.modules file--->
+```
+npm install
+rm -rf node_modules/sharp
+SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux --libc=glibc sharp
+```
+Create new empty init files ----->
+npm init -y
+Delete --->
+delete `node.modules` file
+
+
+
 - Add node_modules to `.gitignore` file
 
 
@@ -58,4 +71,4 @@ Lambda error in CloudWatch ->
 }
 ```
 
-FIXED ---- run command `npm i @aws-sdk/client-s3`
+FIXED ---- typo in lib CDK file, `PRCESS_HEIGHT`.. Lamnda resolves and processes correctly
