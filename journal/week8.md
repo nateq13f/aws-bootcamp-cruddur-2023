@@ -40,10 +40,20 @@ export DOMAIN_NAME=fireforeffect.live
 gp env DOMAIN_NAME=fireforeffect.live
 ```
 
-## Monitor the Lambda function process
+### Monitor the Lambda function process
 - Create s3 event notification for PUT, for our use-case the cruddur app
 - Lambda console -> Look at the Lambda trigger
 - Look at the CloudWatch log group
+
+
+### UPLOADING avatar setup for frontend
+
+- Removed x-rays variables from `backend-flask.env` temporarily
+```
+AWS_XRAY_URL=*4567-nateq13f-awsbootcampcru-bdf1csl7gwh.ws-us94.gitpod.io*
+AWS_XRAY_DAEMON_ADDRESS=xray-daemon:2000
+```
+
 
 ### Challenges --
 - my buket name was named `cruddur-thumbs` when it should have been my own domains name, so I used `cdk destroy` to tear down all resources created by the CDK to start fresh and grab new env vars.
