@@ -9,7 +9,7 @@ services:
     volumes:
       - ./backend-flask:/backend-flask
     networks:
-      - cruddur-net  
+      - cruddur-net
   frontend-react-js:
     env_file:
     - frontend-react-js.env
@@ -19,7 +19,7 @@ services:
     volumes:
       - ./frontend-react-js:/frontend-react-js
     networks:
-      - cruddur-net  
+      - cruddur-net
   dynamodb-local:
     # https://stackoverflow.com/questions/67533058/persist-local-dynamodb-data-in-volumes-lack-permission-unable-to-open-databa
     # We needed to add user:root to get this working.
@@ -58,7 +58,7 @@ services:
     ports:
       - 2000:2000/udp
     networks:
-      - cruddur-net       
+      - cruddur-net 
 # the name flag is a hack to change the default prepend folder
 # name when outputting the image names
 networks: 

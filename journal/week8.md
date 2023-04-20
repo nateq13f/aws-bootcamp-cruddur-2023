@@ -54,6 +54,15 @@ AWS_XRAY_URL=*4567-nateq13f-awsbootcampcru-bdf1csl7gwh.ws-us94.gitpod.io*
 AWS_XRAY_DAEMON_ADDRESS=xray-daemon:2000
 ```
 
+- Create new sql query file call `show.sql` to pull user profile data
+
+- Implement profile display
+- Create `EditProfileButton.js` component just like `CrudButton.js` copmponent
+and `EditProfileButton.css` to go along with it for the CSS part.
+
+
+
+
 
 ### Challenges --
 - my buket name was named `cruddur-thumbs` when it should have been my own domains name, so I used `cdk destroy` to tear down all resources created by the CDK to start fresh and grab new env vars.
@@ -82,3 +91,5 @@ Lambda error in CloudWatch ->
 ```
 
 FIXED ---- typo in lib CDK file, `PRCESS_HEIGHT`.. Lamnda resolves and processes correctly
+
+- My cruddur-net somehow got deleted.. so I installed it again and my docker-compose went up.
