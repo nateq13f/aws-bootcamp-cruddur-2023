@@ -75,14 +75,13 @@ export default function NotificationsFeedPage() {
           <div className='activity_feed_heading'>
             <div className='title'>Notifications</div>
           </div>
-        <ActivityFeed 
-          title="Notifications" 
-          setReplyActivity={setReplyActivity} 
-          setPopped={setPoppedReply} 
-          activities={activities} 
-        />
+          <ActivityFeed 
+            setReplyActivity={setReplyActivity} 
+            setPopped={setPoppedReply} 
+            activities={activities} 
+          />
         </div>
-      </div>  
+      </div>
       <DesktopSidebar user={user} />
     </article>
   );
