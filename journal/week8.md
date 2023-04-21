@@ -60,7 +60,13 @@ AWS_XRAY_DAEMON_ADDRESS=xray-daemon:2000
 - Create `EditProfileButton.js` component just like `CrudButton.js` copmponent
 and `EditProfileButton.css` to go along with it for the CSS part.
 
+- Add `ENV PYTHONUNBUFFERED=1`  to file `backend-flask/Dockerfile` to enable better logging for the python in backend.
 
+### Creating  Edit Profile button -
+
+- Created `frontend-react-js/jsconfig.json`  - changes source directory location
+- Created `ProfileForm.js` file to create the actual profileform popup page
+- Created `Popup.css` for additional css for profile editing
 
 
 
