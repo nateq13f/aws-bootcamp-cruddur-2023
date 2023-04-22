@@ -1,11 +1,8 @@
 # Week 8 — Serverless Image Processing
 
 - `cdk synth` - just shows you in the console what CDK will create in your AWS environment.
-
 - `cdk bootstrap` - Creates a CDK CFN stack for your REGION. You only need to run this once.
-
 - Import dotenv file to CDK stack file with `import * as dotenv from 'dotenv'` and `dotenv.config();`
-
 - Add ` cp .env.example .env` to gitpod file or CLI to copy CDK env vars to normal env vars
 
 cd aws/lambdas/process-images
@@ -64,9 +61,38 @@ and `EditProfileButton.css` to go along with it for the CSS part.
 
 ### Creating  Edit Profile button -
 
-- Created `frontend-react-js/jsconfig.json`  - changes source directory location
-- Created `ProfileForm.js` file to create the actual profileform popup page
+- Create `frontend-react-js/jsconfig.json`  - changes source directory location
+- Create `ProfileForm.js` file to create the actual profileform popup page
 - Created `Popup.css` for additional css for profile editing
+- Added endpoint to `app.py` for updating profile form
+- Created `backend-flask/services/update_profile.py` in backend for DB connection
+- Created `backend-flask/db/sql/users/udpate.sql` to update sql of profile updates
+
+Made migrate and rollback scripts
+
+
+### Implement Avatar (part 1)
+
+- Install SDK on frontend
+`npm i @aws-sdk/client-s3 --save`
+
+Made s3upload function in `ProfileForm.js`
+
+
+Pre-signed URL implementation == using Lambda and API gateway
+HTTP API - 
+Ruby Lambda -
+
+create Ruby lambda file `aws/lambdas/cruddur-upload-avatar/function.rb`
+cd into aws/lambdas/cruddur-upload-avatar and run `bundle init` to inti Ruby gemfile
+ADD `gem "aws-sdk-s3"` to Gemfile
+RUN `bundle install` to install that into Gemfile officially
+
+- Install extension Thunder Client as a Postman alternative
+This allows testing for API and even lambda locally before deploying it
+
+- Created Lambda authorizer function for JWT token
+Install `npm install aws-jwt-verify --save` in /lambdas/lambda-authorizer
 
 
 
