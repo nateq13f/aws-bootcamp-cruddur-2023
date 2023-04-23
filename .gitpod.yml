@@ -25,6 +25,7 @@ tasks:
 # runs npm i at start of gitpod (which is needed to dock up) ------>>      
   - name: react-js
     command: |
+      ruby $THEIA_WORKSPACE_TROOT/bin/frontend/generate-env
       cd frontend-react-js
       npm i
 # runs pip install -r requirements at start of gitpod (which is needed to dock up) ------>>    

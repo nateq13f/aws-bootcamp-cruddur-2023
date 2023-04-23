@@ -4,6 +4,7 @@ import process from 'process';
 import {getAccessToken} from 'lib/CheckAuth';
 
 export default function ProfileForm(props) {
+  const [presignedurl, setPresignedurl] = React.useState(0);
   const [bio, setBio] = React.useState(0);
   const [displayName, setDisplayName] = React.useState(0);
 
@@ -22,6 +23,7 @@ export default function ProfileForm(props) {
       const res = await fetch(backend_url, {
         method: "POST",
         headers: {
+          'Origin': "https://3000-nateq13f-awsbootcampcru-a073er55gwt.ws-us95.gitpod.io",
           'Authorization': `Bearer ${access_token}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -46,11 +48,12 @@ export default function ProfileForm(props) {
     const type = file.type
     const preview_image_url = URL.createObjectURL(file)
     console.log(filename,size,type)
+    const presignedurl = await s3uploadkey()
+    console.log( 'pp', presignedurl)
 
     try {
       console.log('s3upload')
-      const backend_url = ""
-      const res = await fetch(backend_url, {
+      const res = await fetch(presignedurl, {
         method: "PUT",
         body: file,
         headers: {
@@ -58,6 +61,7 @@ export default function ProfileForm(props) {
       }})
       let data = await res.json();
       if (res.status === 200) {
+        setPresignedurl(data.url)
         console.log('presigned url',data)
       } else {
         console.log(res)

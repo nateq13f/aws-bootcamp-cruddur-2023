@@ -96,6 +96,21 @@ This allows testing for API and even lambda locally before deploying it
 Install `npm install aws-jwt-verify --save` in /lambdas/lambda-authorizer
 
 
+API gateway ==>
+Routes
+1. POST
+/avatars/key_upload
+
+2. OPTIONS
+/{proxy+}
+
+
+----- scripts required to run app ---
+./bin/sb/setup
+./bin/ddb/schema-load
+./bin/ddb/seed
+./bin/db/migrate
+
 
 ### Challenges --
 - my buket name was named `cruddur-thumbs` when it should have been my own domains name, so I used `cdk destroy` to tear down all resources created by the CDK to start fresh and grab new env vars.
