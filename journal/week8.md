@@ -71,12 +71,12 @@ and `EditProfileButton.css` to go along with it for the CSS part.
 Made migrate and rollback scripts
 
 
-### Implement Avatar (part 1)
+### Implement and upload Avatar (part 1)
 
 - Install SDK on frontend
 `npm i @aws-sdk/client-s3 --save`
 
-Made s3upload function in `ProfileForm.js`
+Made s3upload function in `ProfileForm.js` to uload avatar image
 
 
 Pre-signed URL implementation == using Lambda and API gateway
@@ -87,6 +87,7 @@ create Ruby lambda file `aws/lambdas/cruddur-upload-avatar/function.rb`
 cd into aws/lambdas/cruddur-upload-avatar and run `bundle init` to inti Ruby gemfile
 ADD `gem "aws-sdk-s3"` to Gemfile
 RUN `bundle install` to install that into Gemfile officially
+To run function --> `bundle exec ruby function.rb`
 
 - Install extension Thunder Client as a Postman alternative
 This allows testing for API and even lambda locally before deploying it
