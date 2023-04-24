@@ -112,6 +112,32 @@ Routes
 ./bin/db/migrate
 
 
+Added CORS poicy to s3 avatars bucket --->>
+```
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "PUT"
+        ],
+        "AllowedOrigins": [
+            "https://*.gitpod.com"
+        ],
+        "ExposeHeaders": [
+            "x-amz-server-side-encryption",
+            "x-amz-request-id",
+            "x-amz-id-2"
+        ],
+        "MaxAgeSeconds": 3000
+    }
+]
+```
+
+
+
+
 ### Challenges --
 - my buket name was named `cruddur-thumbs` when it should have been my own domains name, so I used `cdk destroy` to tear down all resources created by the CDK to start fresh and grab new env vars.
 - Had to also reset the env var for THUMBING_BUCKET_NAME to my own domain `assets.fireforeffect.live`
