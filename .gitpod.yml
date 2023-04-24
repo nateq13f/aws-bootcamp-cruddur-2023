@@ -1,7 +1,3 @@
-vscode:
-  extensions:
-    - 42Crunch.vscode-openapi
-    - cweijan.vscode-postgresql-client2
 tasks:
   - name: aws-cli
     env:
@@ -25,7 +21,7 @@ tasks:
 # runs npm i at start of gitpod (which is needed to dock up) ------>>      
   - name: react-js
     command: |
-      ruby $THEIA_WORKSPACE_TROOT/bin/frontend/generate-env
+      ruby $THEIA_WORKSPACE_ROOT/bin/frontend/generate-env
       cd frontend-react-js
       npm i
 # runs pip install -r requirements at start of gitpod (which is needed to dock up) ------>>    
@@ -47,6 +43,10 @@ tasks:
       cd thumbing-serverless-cdk
       cp .env.example .env
       npm i
+vscode:
+  extensions:
+    - 42Crunch.vscode-openapi
+    - cweijan.vscode-postgresql-client2
 ports:
   - name: frontend
     port: 3000
