@@ -23,6 +23,13 @@ Delete --->
 delete `node.modules` file
 
 
+----- scripts required to run app succesfully -----
+./bin/db/setup
+./bin/ddb/schema-load
+./bin/ddb/seed
+./bin/db/migrate
+
+
 
 - Add node_modules to `.gitignore` file
 
@@ -96,23 +103,27 @@ This allows testing for API and even lambda locally before deploying it
 Install `npm install aws-jwt-verify --save` in /lambdas/lambda-authorizer
 
 
-API gateway ==>
+### API gateway ==>
+
 Routes
 1. POST
 /avatars/key_upload
 
+2 lambdas --->
+Athorization 
+AND
+Integration 
+
 2. OPTIONS
 /{proxy+}
 
-
------ scripts required to run app ---
-./bin/sb/setup
-./bin/ddb/schema-load
-./bin/ddb/seed
-./bin/db/migrate
+1 lambda --->
+Integration
 
 
-Added CORS poicy to s3 avatars bucket --->>
+### CORS SETUP
+
+Added CORS policy to s3 avatars bucket --->>
 ```
 [
     {
@@ -135,7 +146,11 @@ Added CORS poicy to s3 avatars bucket --->>
 ]
 ```
 
+API-Gateway no longer needs CORS since we are forwarding CORS headers in the code itself.
 
+- Removing all console logging because troubleshooting is done, so no use for logging to console anymore.
+
+- EDIT Lambda authorize with CORS updates for JWT
 
 
 ### Challenges --
