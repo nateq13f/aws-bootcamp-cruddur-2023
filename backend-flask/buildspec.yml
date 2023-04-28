@@ -26,6 +26,7 @@ phases:
 env:
   variables:
     AWS_ACCOUNT_ID: 579018833036
+    AWS_DEFAULT_REGION: us-east-1
     CONTAINER_NAME: backend-flask
     IMAGE_URL: 579018833036.dkr.ecr.us-east-1.amazonaws.com/backend-flask
     REPO_NAME: backend-flask:latest
