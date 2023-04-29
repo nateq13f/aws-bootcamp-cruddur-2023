@@ -21,3 +21,30 @@ Codepipeline =
 16. Timeout = 20 minutes
 17.  Create `buildspec.yml` file for build specs of CodeBuild including env variables from ECS vars.
 18. Buildspec for CodeBuild is from file `backend-flask/buildspec.yml`
+
+
+Must still have IAM role ECR permissions
+
+```
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:CompleteLayerUpload",
+        "ecr:GetAuthorizationToken",
+        "ecr:InitiateLayerUpload",
+        "ecr:PutImage",
+        "ecr:UploadLayerPart",
+        "ecr:BatchGetImage",
+        "ecr:GetDownloadUrlForLayer"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
