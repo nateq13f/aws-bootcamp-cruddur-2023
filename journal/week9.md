@@ -2,7 +2,7 @@
 
 Code pipeline is so you can automate the process of code changes. Build and push to ECR.
 
-Codepipeline = 
+## Codepipeline /  CodeBuild = 
 1. Create - name
 2. GithubV2
 3. Install app (ONLY the repo that we need)
@@ -48,3 +48,11 @@ Must still have IAM role ECR permissions
   ]
 }
 ```
+
+
+## CodePipeline
+
+1. Edit -> Add Source stage `bake-image`
+2. Add Build stage `bake`
+3. Build stage output = `ImageDefinition`
+4. Deploy stage Input Artifact = `ImageDefinition`
