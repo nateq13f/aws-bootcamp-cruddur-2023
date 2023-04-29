@@ -25,6 +25,19 @@ Code pipeline is so you can automate the process of code changes. Build and push
 
 Must still have IAM role ECR permissions
 
+
+
+## CodePipeline
+
+1. Edit -> Add Source stage `bake-image`
+2. Add Build stage `bake`
+3. Build stage output = `ImageDefinition`
+4. Deploy stage Input Artifact = `ImageDefinition`
+
+### Challenges
+
+- Make sure IAM role has correct permissions for ECR and Codebuild/Pipeline
+
 ```
 
 {
@@ -48,11 +61,3 @@ Must still have IAM role ECR permissions
   ]
 }
 ```
-
-
-## CodePipeline
-
-1. Edit -> Add Source stage `bake-image`
-2. Add Build stage `bake`
-3. Build stage output = `ImageDefinition`
-4. Deploy stage Input Artifact = `ImageDefinition`
