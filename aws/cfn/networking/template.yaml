@@ -1,4 +1,16 @@
 AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  The base networking components for our stack:
+  - VPC
+    - sets DNS hostnames for EC2 instances
+    - Only IPV4, IPv6 disabled
+  - InternetGateway
+  - Route Table
+    - route to the IGW
+    - route to Local
+  - 6 Subnets associated to route table
+    - 3 Public Subnets 
+    - 3 Private Subnets 
 
 Parameters:
   VpcCidrBlock:
@@ -6,7 +18,7 @@ Parameters:
     Default: 10.0.0.0/16
   Az1:
     Type: AWS::EC2::AvailabilityZone::Name
-    Default: ca-central-1a
+    Default: us-east-1a
   SubnetCidrBlocks: 
     Description: "Comma-delimited list of CIDR blocks for our private public subnets"
     Type: CommaDelimitedList
@@ -19,11 +31,10 @@ Parameters:
       10.0.20.0/24
   Az2:
     Type: AWS::EC2::AvailabilityZone::Name
-    Default: ca-central-1b
+    Default: us-east-1b
   Az3:
     Type: AWS::EC2::AvailabilityZone::Name
-    Default: ca-central-1d
-
+    Default: us-east-1c
 # RESOURCES section is ALWAYS required, its basically the "services" section    
 Resources:
   VPC:
@@ -171,15 +182,15 @@ Outputs:
   VpcId:
     Value: !Ref VPC
     Export:
-      Name: VpcId
+      Name: !Sub "${AWS::StackName}VpcId"
   VpcCidrBlock:
     Value: !GetAtt VPC.CidrBlock
     Export:
-      Name: VpcCidrBlock
+      Name: !Sub "${AWS::StackName}VpcCidrBlock"
   SubnetCidrBlocks:
     Value: !Join [",", !Ref SubnetCidrBlocks]
     Export:
-      Name: SubnetCidrBlocks
+      Name: !Sub "${AWS::StackName}SubnetCidrBlocks"
   SubnetIds:
     Value: !Join 
       - ","
@@ -190,7 +201,7 @@ Outputs:
         - !Ref SubnetPriv2
         - !Ref SubnetPriv3
     Export:
-      Name: SubnetIds
+      Name: !Sub "${AWS::StackName}SubnetIds"
   AvailabilityZones:
     Value: !Join 
       - ","
@@ -198,4 +209,4 @@ Outputs:
         - !Ref Az2
         - !Ref Az3
     Export:
-      Name: AvailabilityZones
+      Name: !Sub "${AWS::StackName}AvailabilityZones"
