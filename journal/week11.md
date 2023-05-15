@@ -53,3 +53,18 @@ Deleted all resources from AWS environment to make room and avoid conflicts from
 
 from /aws-bootcamp-cruddur-2023/
 ` gem install cfn-toml`
+
+
+## DynamoDB CFN 
+
+- Making DynamoSB CFN template from SAM because it is bascially short-hand CFN so it is more simple and easier to make.
+
+
+### SAM ----->
+Installed SAM and added SAM to gitpod file
+
+Made 3 script files for DDB to build, package and deploy --
+
+`bin/sam/ddb/build`
+`bin/sam/ddb/package`
+`bin/sam/ddb/deploy`
